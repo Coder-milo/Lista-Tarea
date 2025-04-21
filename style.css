@@ -1,0 +1,52 @@
+.lista-tareas {
+  border: 2px solid #000;
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 500px;
+  background-color: white;
+}
+.grupo-input {
+  display: flex;
+  margin-bottom: 15px;
+}
+.grupo-input input {
+  flex: 1;
+  padding: 10px;
+  font-size: 14px;
+}
+.grupo-input button {
+  background: black;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+#listaTareas {
+  list-style: none;
+  padding: 0;
+}
+.tarea {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.tarea span {
+  flex: 1;
+  margin-left: 10px;
+}
+.completada {
+  text-decoration: line-through;
+  color: gray;
+}
+body {
+  
+  height: 100vh; 
+  display: flex;
+  justify-content: center;
+  align-items: center;   
+  
+}
+.contenedor {
+  text-align: center;
+}
