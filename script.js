@@ -26,17 +26,14 @@ function renderizarTareas() {
   const lista = document.getElementById('listaTareas');
   lista.innerHTML = '';
 
-  const pendientes = tareas.filter(t => !t.completada);
-  const completadas = tareas.filter(t => t.completada);
-
-  [...pendientes, ...completadas].forEach((tarea, index) => {
+  tareas.forEach((tarea, index) => {
     const li = document.createElement('li');
     li.className = 'tarea';
 
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.checked = tarea.completada;
-    checkbox.id = `tarea-${index}`; // Añadimos un id único por tarea
+    checkbox.id = `tarea-${index}`; // Aseguramos un id único para cada tarea
     checkbox.onclick = () => alternarEstado(index);
 
     const label = document.createElement('label');
@@ -44,7 +41,7 @@ function renderizarTareas() {
 
     const span = document.createElement('span');
     span.textContent = tarea.descripcion;
-    if (tarea.completada) span.classList.add('completada');
+    if (tarea.completada) span.classList.add('completada'); // Si la tarea está completada, añadimos una clase
 
     const botonEliminar = document.createElement('button');
     botonEliminar.textContent = '🗑️';
@@ -64,3 +61,4 @@ document.getElementById('entradaTarea').addEventListener('keypress', function (e
     agregarTarea();
   }
 });
+
