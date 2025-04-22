@@ -7,6 +7,8 @@ function agregarTarea() {
     tareas.push({ descripcion, completada: false });
     input.value = '';
     renderizarTareas();
+  } else {
+    alert('Por favor, ingresa una descripción para la tarea.');
   }
 }
 
@@ -34,7 +36,11 @@ function renderizarTareas() {
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.checked = tarea.completada;
+    checkbox.id = `tarea-${index}`; // Añadimos un id único por tarea
     checkbox.onclick = () => alternarEstado(index);
+
+    const label = document.createElement('label');
+    label.setAttribute('for', checkbox.id); // Asignamos el id al label
 
     const span = document.createElement('span');
     span.textContent = tarea.descripcion;
@@ -44,12 +50,17 @@ function renderizarTareas() {
     botonEliminar.textContent = '🗑️';
     botonEliminar.onclick = () => eliminarTarea(index);
 
+    label.appendChild(span); // Ponemos la descripción de la tarea dentro del label
     li.appendChild(checkbox);
-    li.appendChild(span);
+    li.appendChild(label);
     li.appendChild(botonEliminar);
     lista.appendChild(li);
   });
 }
+
 document.getElementById('entradaTarea').addEventListener('keypress', function (e) {
-  if (e.key === 'Enter') agregarTarea();
+  if (e.key === 'Enter') {
+    e.preventDefault(); // Evitar que se recargue la página al presionar "Enter"
+    agregarTarea();
+  }
 });
